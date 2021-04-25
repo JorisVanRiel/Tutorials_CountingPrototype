@@ -3,21 +3,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Counter : MonoBehaviour
 {
-    public Text CounterText;
+    public TextMeshProUGUI CounterText;
+    public string boxName;
 
     private int Count = 0;
 
     private void Start()
     {
         Count = 0;
+        this.UpdateText();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         Count += 1;
-        CounterText.text = "Count : " + Count;
+        UpdateText();
     }
+
+    private void UpdateText()
+    {
+        CounterText.text = $"{this.boxName}: {this.Count}";
+    }
+
 }
